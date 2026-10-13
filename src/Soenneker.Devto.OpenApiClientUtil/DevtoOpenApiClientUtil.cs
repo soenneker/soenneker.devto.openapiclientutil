@@ -24,7 +24,7 @@ public sealed class DevtoOpenApiClientUtil : IDevtoOpenApiClientUtil
         {
             HttpClient httpClient = await httpClientUtil.Get(token).NoSync();
 
-            var apiKey = configuration.GetValueStrict<string>("Devto:ApiKey");
+            var apiKey = configuration.GetStringStrict("Devto:ApiKey");
             string authHeaderName = configuration["Devto:AuthHeaderName"] ?? "api-key";
             string authHeaderValueTemplate = configuration["Devto:AuthHeaderValueTemplate"] ?? "{token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
